@@ -1,0 +1,167 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TimeLineElement from "../components/cv/TimeLine.astro";
+---
+
+<BaseLayout title="Resume" sideBarActiveItemID="cv">
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Perfil</div>
+  </div>
+
+  <div class="mb-10 text-justify">
+    +5 years of experience. I am a FullStack developer from Jaén, Spain,
+    specializing in web development.
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Experience</div>
+  </div>
+
+  <div class="time-line-container mb-10">
+    <TimeLineElement
+      title="Desarrollador de Software"
+      subtitle="From 08/2023 to present at Experis/Manpower, Malaga"
+    >
+      Working as Senior Software Developer for Ericsson in Cognitive Software
+      project
+      <a
+        href="https://www.ericsson.com/en/network-automation/cognitive-technology"
+        >Cognitive Software</a
+      >
+    </TimeLineElement>
+    <TimeLineElement
+      title="Desarrollador de Software FullStack"
+      subtitle="From 03/2022 to 08/2023 at Gesthispania, Cordoba"
+    >
+      At Gesthispania, I have been involved in the maintenance and continuous
+      improvement of the company’s internal tools, with a particular focus on
+      the gestoría area. My role has also included defending and presenting
+      projects to clients, demonstrating my ability to effectively communicate
+      technical concepts to non-technical audiences. I have led the development
+      and launch of new projects, facilitating integration with international
+      partners, and played a significant role in enhancing the gestoría
+      department within the company. My initiatives to develop processes and
+      improvements have enabled greater integration with new clients, optimizing
+      internal procedures and resulting in significant cost savings.
+      Additionally, I have performed internal maintenance tasks in the
+      development area, including implementing various hotfixes in code branches
+      to ensure their integrity. I have also developed Python tools for
+      connecting to AWS, allowing for the implementation of a generic tool for
+      utilizing RabbitMQ (AmazonMQ). Furthermore, I have created several Docker
+      environments that serve as templates for new projects, enhancing
+      efficiency and standardizing the development process.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Desarrollador Web FullStack"
+      subtitle="From 05/2021 to 03/2022 at Enchufe Solar, Lucena"
+    >
+      I contributed to the ongoing development of an existing ERP system by
+      implementing new functionalities for the acquisition, processing, and
+      storage of electrical consumption data through multiple REST API services
+      and a file system. I developed features to generate consumption charts and
+      metrics within the ERP, enhancing the efficiency and reliability of
+      self-consumption studies. These features relied on data obtained from the
+      previously described functionalities. I implemented an automated
+      scheduling and delivery system for electrical consumption reports to
+      clients, including PDF report generation and automated dispatch. This
+      system ensured timely and effective delivery of updated information to
+      clients, utilizing various internal APIs and CRON jobs. Additionally, I
+      contributed to the development of the internal system’s API by adding new
+      features that allowed rapid data retrieval from any of the other
+      functionalities, resulting in more accurate billing. Furthermore, I
+      established an electrical tariff management system via REST APIs,
+      incorporating both proprietary and third-party applications. This
+      functionality enabled the comparison of various tariffs and, after
+      analyzing client data, presented options that could lead to significant
+      cost savings.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Desarrollador Web FullStack"
+      subtitle="From 06/2019 to 03/2020 at Hiberus Media Labs, Zaragoza/Madrid"
+    >
+      I contributed to the ongoing development of an existing ERP system by
+      implementing new functionalities for the acquisition, processing, and
+      storage of electrical consumption data through multiple REST API services
+      and a file system. I developed features to generate consumption charts and
+      metrics within the ERP, enhancing the efficiency and reliability of
+      self-consumption studies. These features relied on data obtained from the
+      previously described functionalities. I implemented an automated
+      scheduling and delivery system for electrical consumption reports to
+      clients, including PDF report generation and automated dispatch. This
+      system ensured timely and effective delivery of updated information to
+      clients, utilizing various internal APIs and CRON jobs. Additionally, I
+      contributed to the development of the internal system’s API by adding new
+      features that allowed rapid data retrieval from any of the other
+      functionalities, resulting in more accurate billing. Furthermore, I
+      established an electrical tariff management system via REST APIs,
+      incorporating both proprietary and third-party applications. This
+      functionality enabled the comparison of various tariffs and, after
+      analyzing client data, presented options that could lead to significant
+      cost savings.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Desarrollador Cobol"
+      subtitle="From 04/2018 to 07/2019 at Accenture, Madrid"
+    >
+      I contributed to multiple banking migration projects for renowned clients
+      such as Liberbank, Banco Sabadell, and Santander. Utilizing COBOL and JCL,
+      I facilitated the modernization of legacy systems and ensured compliance
+      with current business requirements. I developed innovative processes that
+      allowed for format modifications and data processing, preventing the loss
+      of valuable information during banking migrations. Collaborating with
+      multiple teams, I distributed maintenance tasks and ensured project
+      quality and efficiency at all times. My contributions led to the
+      successful achievement of specific client objectives in banking migration
+      projects, resulting in increased efficiency and customer satisfaction.
+    </TimeLineElement>
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Educación</div>
+  </div>
+
+  <div class="time-line-container grid gap-4 mb-10">
+    <TimeLineElement
+      title="Tecnico Superior en Desarrollo de Aplicaciones Web"
+      subtitle="2015 - 2017 en I.E.S. Oretania, Linares, Jaén"
+    />
+    <TimeLineElement
+      title="Técnico Superior en Sistemas de Telecomunicaciones e Informática"
+      subtitle="2013 - 2015 en I.E.S. La Fuensanta, Cordoba, Cordoba"
+    />
+  </div>
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Certifications</div>
+  </div>
+
+  <ul class="list-disc mx-6 mb-10 grid gap-2">
+    <li>
+      <a href="#" target="_blank"> Certification Name (with link)</a>
+    </li>
+    <li>
+      <a href="#" target="_blank"> Certification Name (with link)</a>
+    </li>
+  </ul>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Skills</div>
+  </div>
+
+  <ul class="list-disc md:columns-5 columns-2 mx-6">
+    <li>Skill Name</li>
+    <li>Skill Name</li>
+    <li>Skill Name</li>
+    <li>Skill Name</li>
+    <li>Skill Name</li>
+    <li>Skill Name</li>
+    <li>Skill Name</li>
+    <li>Skill Name</li>
+    <li>Skill Name</li>
+    <li>Skill Name</li>
+    <li>Skill Name</li>
+    <li>Skill Name</li>
+    <li>Skill Name</li>
+    <li>Skill Name</li>
+    <li>Skill Name</li>
+  </ul>
+</BaseLayout>
