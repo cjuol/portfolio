@@ -3,6 +3,6 @@
 
 export const SITE_TITLE = "Porfolio de Cristóbal Jurado -  Desarrollador Web";
 export const SITE_DESCRIPTION =
-  "Astrofy is a free and open-source template for your Personal Portfolio Website built with Astro and TailwindCSS. Create in minutes a website with Blog, CV, Project Section, Store and RSS Feed.";
+  "Hi There 👋 I´m Cristóbal a Software Engineer based on Jaén. This is my personal portfolio";
 export const GENERATE_SLUG_FROM_TITLE = true;
 export const TRANSITION_API = true;
