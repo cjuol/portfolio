@@ -1,16 +1,58 @@
 ---
-title: "Demo Post 2"
-description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-pubDate: "Sep 11 2022"
+title: "Hexagonal Architecture"
+description: "Hexagonal architecture, also known as ports and adapters, was created by Alistair Cockburn."
+pubDate: "FEB 05 2024"
 heroImage: "/post_img.webp"
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+Hexagonal architecture, also known as ports and adapters, was created by Alistair Cockburn. This architecture aims to create a system decoupled from the framework, database, web server, etc. The idea is that changes in peripheral technologies should not affect the business logic.
 
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc. Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra massa massa ultricies mi.
+## Basic Concepts
 
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
+Hexagonal architecture is based on two main concepts:
 
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
+1. **Ports:** These are the interfaces through which our application interacts with the outside world. There are two types of ports:
 
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
+   - Driving ports (or primary): They represent the inputs to our application. For example, a REST API, a command-line interface, etc.
+
+   - Driven ports (or secondary): They represent the outputs of our application. For example, a database, a web service, etc.
+
+2. **Adapters:** These are the concrete implementations of our ports. There are two types of adapters:
+
+   - Driving adapters: They use the driving ports. They implement the necessary logic to translate user input into something our application can understand.
+
+   - Driven adapters: They use the driven ports. They implement the necessary logic to translate the outputs of our application into something the outside world can understand.
+
+## Benefits of Hexagonal Architecture
+
+- **Decoupling of infrastructure:** Business logic does not depend on infrastructure. This means that infrastructure can be changed without needing to modify the business logic.
+
+- **Testability:** Since the infrastructure is decoupled, it is possible to test the business logic without needing a database, a web server, etc. You can use "mocks" for these components.
+
+- **Multiple interfaces:** By decoupling business logic from the user interface, you can have multiple interfaces for the same application. For example, a REST API and a command-line interface.
+
+## Example of Application with Hexagonal Architecture
+
+Let's imagine a to-do list application. We would have something like this:
+
+1. **Driving ports:** A REST API that allows users to create, read, update, and delete tasks.
+
+2. **Driving adapters:** The logic that takes user input from the REST API and translates it into something the business logic can understand.
+
+3. **Business logic:** The code that handles the logic of tasks. This logic knows nothing about REST APIs, databases, etc.
+
+4. **Driven ports:** Interfaces representing the operations our business logic needs to interact with the outside world. In this case, we could have a port representing the ability to persist tasks.
+
+5. **Driven adapters:** The implementation of the driven ports. In this case, we could have an adapter implementing the persistence port using MongoDB.
+
+I hope this explanation helps you understand Hexagonal Architecture. Remember, the goal of this architecture is to create an application that is decoupled from infrastructure and can easily adapt to changes. In Hexagonal Architecture, business logic is the core of the application, and everything else is details.
+
+## Additional Considerations
+
+It is important to note that while Hexagonal Architecture brings considerable benefits, it can also add a layer of complexity to your code. Introducing ports and adapters can generate more code and abstractions to manage. Therefore, it is crucial to consider whether the benefits of this architecture outweigh the additional cost of complexity before adopting it.
+
+Additionally, Hexagonal Architecture is just one of several architectures you can use to design your application. Other popular options include Layered Architecture, Onion Architecture, and Clean Architecture. Each of these architectures has its own benefits and drawbacks, and the choice between them will depend on the specific needs of your project.
+
+## Conclusion
+
+In summary, Hexagonal Architecture is a software design strategy that puts business logic at the center of the application and allows infrastructure details to be easily interchangeable. It is especially useful in projects where changes in infrastructure are anticipated, or where a high degree of testability is needed. However, it can also add a layer of complexity to your code, so it should be adopted with consideration.
