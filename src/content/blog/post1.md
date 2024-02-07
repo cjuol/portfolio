@@ -24,7 +24,7 @@ Object Calisthenics are programming exercises, formalized as a set of 9 rules in
 
 Having too many levels of indentation in your code is often bad for readability, and maintainability. Most of the time, you can’t easily understand the code without compiling it in your head, especially if you have various conditions at different level, or a loop in another loop, as shown in this example:
 
-```PHP
+```php
     class Board {
     public String board() {
         StringBuilder buf = new StringBuilder();
@@ -47,7 +47,7 @@ Having too many levels of indentation in your code is often bad for readability,
 In order to follow this rule, you have to split your methods up. Martin Fowler, in his book Refactoring, introduces the Extract Method pattern, which is exactly what you have to do/use.
 You won’t reduce the number of lines of code, but you will increase readability in a significant way:
 
-```PHP
+```php
 class Board {
     public String board() {
         StringBuilder buf = new StringBuilder();
@@ -77,7 +77,7 @@ class Board {
 
 The else keyword is well-known as the if/else construct is built into nearly all programming languages. Do you remember the last time you saw a nested conditional? Did you enjoy reading it? I don’t think so, and that is exactly why it should be avoided. As it is so easy to add a new branch to the existing code than refactoring it to a better solution, you often end up with a really bad code.
 
-```PHP
+```php
 public void login(String username, String password) {
     if (userRepository.isValid(username, password)) {
         redirect("homepage");
@@ -91,7 +91,7 @@ public void login(String username, String password) {
 
 An easy way to remove the else keyword is to rely on the early return solution.
 
-```PHP
+```php
 public void login(String username, String password) {
     if (userRepository.isValid(username, password)) {
         return redirect("homepage");
@@ -106,7 +106,7 @@ public void login(String username, String password) {
 The condition can be either optimistic, meaning you have conditions for your error cases and the rest of your method follows the default scenario, or you can adopt a defensive approach (somehow related to Defensive Programming), meaning you put the default scenario into a condition, and if it is not satisfied, then you return an error status. This is better as it prevents potential issues you didn’t think about.
 As an alternative, you can introduce a variable in order to make your return statement parametrizable. This is not always possible though.
 
-```PHP
+```php
 public void login(String username, String password) {
     String redirectRoute = "homepage";
 
@@ -136,24 +136,24 @@ Each collection gets wrapped in its own class, so now behaviors related to the c
 
 ## 5. One Dot Per Line
 
-This dot is the one you use to call methods in Java, or C# for instance. It would be an arrow in PHP, but who uses PHP anyway? :D
+This dot is the one you use to call methods in Java, or C# for instance. It would be an arrow in php, but who uses php anyway? :D
 Basically, the rule says that you should not chain method calls. However, it doesn’t apply to Fluent Interfaces and more generally to anything implementing the Method Chaining Pattern (e.g. a Query Builder).
 For other classes, you should respect this rule. It is the direct use of the Law of Demeter, saying only talk to your immediate friends, and don’t talk to strangers.
 Look at these classes:
 
-```PHP
+```php
 class Location {
     public Piece current;
 }
 ```
 
-```PHP
+```php
 class Piece {
     public String representation;
 }
 ```
 
-```PHP
+```php
 class Board {
     public String boardRepresentation() {
         StringBuilder buf = new StringBuilder();
@@ -170,14 +170,14 @@ class Board {
 It is ok-ish to have public attributes in Piece and Location. Actually, having a public property or a private one with getter/setter is the same thing (see Rule 9).
 However, the boardRepresentation() method is awful, take a look at this line:
 
-```PHP
+```php
 buf.append(loc.current.representation.substring(0, 1));
 ```
 
 It accesses a Location, then its current Piece, then the Piece’s representation on which it performs an action. This is far from One Dot Per Line.
 Fortunately, the Law of Demeter tells you to talk to your friends, so let’s do that:
 
-```PHP
+```php
 class Location {
     private Piece current;
 
@@ -189,7 +189,7 @@ class Location {
 
 Making the instance of Piece private ensures that you won’t try to do something bad. However, as you need to perform an action on this attribute, you need a new method addTo(). It is not Location’s responsibility to determine how the Piece will be added, so let’s ask it:
 
-```PHP
+```php
 class Piece {
     private String representation;
 
@@ -206,7 +206,7 @@ class Piece {
 Then again, you should change the visibility of your attribute. As a reminder, the Open/Closed Principle says that software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification.
 Also, extracting the code to get the first character of the representation in a new method looks like a good idea as it may be reused at some point. Finally, here is the updated Board class:
 
-```PHP
+```php
 class Board {
     public String boardRepresentation() {
         StringBuilder buf = new StringBuilder();
@@ -250,7 +250,7 @@ It is okay to use accessors to get the state of an object, as long as you don’
 That is why getters/setters are often considered evil. Then again, they violate the Open/Closed Principle.
 Let’s take an example:
 
-```PHP
+```php
 // Game
 private int score;
 
@@ -270,7 +270,7 @@ In the code above, the getScore() is used to make a decision, you choose how to 
 
 A better solution would be to remove the getters/setters, and to provide methods that make sense. Remember, you must tell the class to do something, and you should not ask it. In the following, you tell the game to update your score as you destroyed ENEMY_DESTROYED_SCORE enemies.
 
-```PHP
+```php
 // Game
 public void addScore(int delta) {
     score += delta;

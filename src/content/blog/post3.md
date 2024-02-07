@@ -1,57 +1,63 @@
 ---
-title: "Demo Post 3"
-description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-pubDate: "Sep 12 2022"
+title: "Stream Class"
+description: "Stream is a feature introduced in Java 8 that provides a more efficient and concise way to process data collections in a declarative and functional manner"
+pubDate: "Feb 07 2024"
 heroImage: "/post_img.webp"
-badge: "Demo badge"
-tags: ["rust","tokio"]
+badge: "Most Recent"
+tags: ["Java", "Stream"]
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer
-malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas
-pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse
-platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada
-fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea
-dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst
-quisque sagittis purus sit amet.
+## Using Stream in Java
 
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum
-quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet.
-Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus.
-Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit
-ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt
-dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus
-arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed
-tempus urna et pharetra pharetra massa massa ultricies mi.
+### Introduction
 
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam
-sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec.
-Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna
-fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et
-egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel
-turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra
-nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim
-praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus
-egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam
-ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor
-purus non. Amet dictum sit amet justo donec enim.
+`Stream` is a feature introduced in Java 8 that provides a more efficient and concise way to process data collections in a declarative and functional manner. With `Stream`, you can perform filtering, mapping, sorting, and reduction operations on collections of elements without having to write explicit loops.
 
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut
-consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra.
-Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor
-dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor
-dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque
-eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices
-tincidunt arcu. Id cursus metus aliquam eleifend mi.
+### Basic Example
 
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus
-imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu
-cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt
-dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat
-sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida.
-Egestas integer eget aliquet nibh praesent tristique magna.
+Suppose we have a list of numbers and we want to filter only the even numbers and print them to the console. Here's how we would do it using `Stream`:
+
+```java
+import java.util.Arrays;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating a list of numbers
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+        // Using Stream to filter even numbers
+        numbers.stream()
+               .filter(num -> num % 2 == 0) // Filter only even numbers
+               .forEach(System.out::println); // Print each number to the console
+    }
+}
+```
+
+### Code Explanation
+
+1. **Creating the List**: First, we create a list of numbers using `Arrays.asList()`. This list will contain numbers from 1 to 10.
+
+2. **Obtaining the Stream**: We call the `stream()` method on the `numbers` list. This gives us a `Stream<Integer>` object representing a sequence of elements from the list.
+
+3. **`filter()` Method**: After obtaining the stream, we call the `filter()` method to filter the even numbers. The `filter()` method takes a predicate (a lambda expression in this case) that specifies the filtering criterion. In this example, the predicate is `num -> num % 2 == 0`, which returns `true` if the number is even.
+
+4. **`forEach()` Method**: Finally, we call the `forEach()` method to print each even number to the console. The `forEach()` method takes a consumer (in this case, a reference to the `System.out.println` method) that will be applied to each element of the stream.
+
+### Common Stream Methods
+
+After calling `.stream()` on a collection, you can chain a variety of methods to manipulate the stream elements. Some common methods include:
+
+- **`filter(Predicate<T>)`**: Filters the stream elements based on the specified predicate.
+- **`map(Function<T, R>)`**: Transforms each stream element by applying a function to it.
+- **`sorted()`**: Sorts the stream elements according to their natural order.
+- **`distinct()`**: Removes duplicate elements from the stream.
+- **`limit(long)`**: Limits the size of the stream to a maximum number of elements.
+- **`forEach(Consumer<T>)`**: Performs an operation for each element of the stream.
+- **`collect(Collector<T, A, R>)`**: Collects the stream elements into a collection or aggregate value.
+
+These are just some of the methods available in `Stream`. There are other methods you can explore based on your specific needs.
+
+### Conclusion
+
+Using `Stream` in Java simplifies data processing by providing a functional and declarative API. It allows you to write cleaner, more concise, and efficient code for manipulating collections of elements. As you become more familiar with `Stream`, you'll be able to perform more advanced and complex operations on your data in an easy and elegant way.
