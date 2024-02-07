@@ -1,0 +1,33 @@
+name:  Deploy Astro code (Multiple Branches)
+
+on:
+  push:
+    branches: [dev]
+  pull_request:
+    types:
+      - closed
+    branches: [main]
+
+jobs:
+  dev-push:
+    if: github.ref == 'refs/heads/dev'
+    env:
+      ## Sets DEV Deployment API credential as an environment variable
+      ASTRO_API_TOKEN: ${{ secrets.DEV_ASTRO_API_TOKEN }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to Astro
+      uses: astronomer/deploy-action@v0.4
+      with:
+        deployment-id: <dev-deployment-id>
+  prod-push:
+    if: github.event.action == 'closed' && github.event.pull_request.merged == true
+    env:
+      ## Sets Prod Deployment API credential as an environment variable
+      ASTRO_API_TOKEN: ${{ secrets.PROD_ASTRO_API_TOKEN }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to Astro
+      uses: astronomer/deploy-action@v0.4
+      with:
+        deployment-id: <prod-deployment-id>
