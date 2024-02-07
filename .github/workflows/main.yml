@@ -1,3 +1,0 @@
-              - name: Astro FTP
-                uses: radenpioneer/astro-ftp-deploy@v0.1.1
-            
