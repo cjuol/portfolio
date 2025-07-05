@@ -17,7 +17,10 @@ const { sideBarActiveItemID } = Astro.props;
         </div>
       </a>
     </div>
-    <SideBarMenu sideBarActiveItemID={sideBarActiveItemID} />
-    <SideBarFooter />
-  </aside>
+      <SideBarMenu sideBarActiveItemID={sideBarActiveItemID} />
+      <div class="hidden lg:flex justify-center mb-4">
+        <button class="btn btn-sm btn-outline lang-toggle">ES</button>
+      </div>
+      <SideBarFooter />
+    </aside>
 </div>

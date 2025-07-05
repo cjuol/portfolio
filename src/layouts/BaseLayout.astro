@@ -69,11 +69,11 @@ const {
         }
       };
       let currentLang = document.documentElement.lang || 'en';
-      const toggleBtn = document.getElementById('lang-toggle');
+      const toggleBtns = document.querySelectorAll('.lang-toggle');
       function applyTranslations(lang) {
         const dict = translations[lang];
         if (!dict) return;
-        if (toggleBtn) toggleBtn.innerText = lang.toUpperCase();
+        toggleBtns.forEach((btn) => (btn.innerText = lang.toUpperCase()));
         for (const [key, value] of Object.entries(dict)) {
           const elem = document.querySelector(`[data-i18n="${key}"]`);
           elem && (elem.innerHTML = value);
@@ -87,7 +87,9 @@ const {
         document.documentElement.lang = currentLang;
         applyTranslations(currentLang);
       }
-      toggleBtn && toggleBtn.addEventListener('click', toggleLanguage);
+      toggleBtns.forEach((btn) =>
+        btn.addEventListener('click', toggleLanguage)
+      );
       applyTranslations(currentLang);
     </script>
   </body>
