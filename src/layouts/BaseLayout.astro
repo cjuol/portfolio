@@ -43,5 +43,52 @@ const {
       </div>
       {includeSidebar && <SideBar sideBarActiveItemID={sideBarActiveItemID} />}
     </div>
+    <script>
+      const translations = {
+        en: {
+          home: 'Home',
+          'projects-link': 'Projects',
+          cv: 'CV',
+          contact: 'Contact',
+          welcome: 'Hey there \uD83D\uDC4B',
+          'im-name': "I'm Crist\u00F3bal Jurado",
+          title: 'Software Engineer',
+          connect: "Let's connect!",
+          projects: 'My last projects </>'
+        },
+        es: {
+          home: 'Inicio',
+          'projects-link': 'Proyectos',
+          cv: 'CV',
+          contact: 'Contacto',
+          welcome: 'Hola \uD83D\uDC4B',
+          'im-name': 'Soy Crist\u00F3bal Jurado',
+          title: 'Ingeniero de Software',
+          connect: '\u00A1Conectemos!',
+          projects: 'Mis \u00FAltimos proyectos </>'
+        }
+      };
+      let currentLang = document.documentElement.lang || 'en';
+      const toggleBtn = document.getElementById('lang-toggle');
+      function applyTranslations(lang) {
+        const dict = translations[lang];
+        if (!dict) return;
+        if (toggleBtn) toggleBtn.innerText = lang.toUpperCase();
+        for (const [key, value] of Object.entries(dict)) {
+          const elem = document.querySelector(`[data-i18n="${key}"]`);
+          elem && (elem.innerHTML = value);
+          document
+            .querySelectorAll(`[data-i18n-link="${key}"]`)
+            .forEach((el) => (el.innerText = value));
+        }
+      }
+      function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'es' : 'en';
+        document.documentElement.lang = currentLang;
+        applyTranslations(currentLang);
+      }
+      toggleBtn && toggleBtn.addEventListener('click', toggleLanguage);
+      applyTranslations(currentLang);
+    </script>
   </body>
 </html>
